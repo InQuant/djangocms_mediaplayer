@@ -210,11 +210,11 @@ fabric.properties
 # Custom
 media/
 dev/
-**/migrations/
+**/migrations/0*.py
 DATABASE.cnf
 staticfiles/
 log/
 .idea
 django_modules_dev/
-templates/
+/templates/
 *.scssc
