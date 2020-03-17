@@ -8,6 +8,7 @@
         {% if instance.preload %} preload="{{ instance.preload }}"{% endif %}
         {% if instance.is_autoplay %} autoplay="true"{% endif %}
         {% if instance.is_loop %} loop{% endif %}
+        {% if instance.poster %} poster="{{ instance.poster.url }}"{% endif %}
         {% if instance.is_muted %} muted{% endif %}>
       <div class="video-play-btn"></div>
       <source src="{{ instance.file.url }}" type="audio/{{mp3}}">
