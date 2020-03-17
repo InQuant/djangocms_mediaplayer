@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.file import FilerFileField, File
+from filer.fields.image import FilerImageField
 
 from djangocms_mediaplayer import app_settings
 
@@ -24,12 +25,11 @@ def validate_video_file(value):
 
 class AudioPlayer(CMSPlugin):
     file = FilerFileField(verbose_name=_('Audio File'), on_delete=models.CASCADE, validators=[validate_audio_file, ])
-    not_supported_text = models.TextField(default=_('Your browser does not support audio playback.'),
-                                          verbose_name=_('Not Supported Text'),
+    not_supported_text = models.TextField(_('Not Supported Text'), default=_('Your browser does not support audio playback.'),
                                           help_text=_('Is shown when browser is not supporting audio files'))
 
-    has_slide = models.BooleanField(default=True, verbose_name=_('Allow sliding'))
-    has_skip_controls = models.BooleanField(default=False, verbose_name=_('Skip Controls'))
+    show_slide = models.BooleanField(_('Allow sliding'), default=True)
+    show_skip_controls = models.BooleanField(_('Skip Controls'), default=False)
 
     PRELOAD_CHOICES = (
         ('auto', 'Auto'),
@@ -37,17 +37,38 @@ class AudioPlayer(CMSPlugin):
         ('none', 'None'),
     )
     preload = models.CharField(null=True, blank=True, max_length=255, choices=PRELOAD_CHOICES, default=PRELOAD_CHOICES[0][0])
-    is_autoplay = models.BooleanField(default=False, verbose_name=_('Autoplay'))
-    is_loop = models.BooleanField(default=False, verbose_name=_('Loop'))
-    is_muted = models.BooleanField(default=False, verbose_name=_('Muted'))
+    is_autoplay = models.BooleanField(_('Autoplay'), default=False)
+    is_loop = models.BooleanField(_('Loop'), default=False)
+    is_muted = models.BooleanField(_('Muted'), default=False)
 
     class Meta:
         verbose_name = _('Audio Player')
-        verbose_name_plural = _('Audio Player')
 
 
 class VideoPlayer(CMSPlugin):
     file = FilerFileField(verbose_name=_('Video File'), on_delete=models.CASCADE, validators=[validate_video_file, ])
-    not_supported_text = models.TextField(default=_('Your browser does not support video playback.'),
-                                        verbose_name=_('Not Supported Text'),
-                                        help_text=_('Is shown when browser is not supporting audio files'))
+    not_supported_text = models.TextField(_('Not Supported Text'),
+                                          default=_('Your browser does not support video playback.'),
+                                          help_text=_('Is shown when browser is not supporting video files'))
+
+    show_controls = models.BooleanField(_('Controls'), default=True)
+
+    show_slide = models.BooleanField(_('Allow sliding'), default=True)
+    show_skip_controls = models.BooleanField(_('Skip Controls'), default=False)
+
+    is_autoplay = models.BooleanField(_('Autoplay'), default=False)
+    is_loop = models.BooleanField(_('Loop'), default=False)
+    is_muted = models.BooleanField(_('Muted'), default=False)
+    PRELOAD_CHOICES = (
+        ('auto', 'Auto'),
+        ('metadata', 'Metadata'),
+        ('none', 'None'),
+    )
+    preload = models.CharField(null=True, blank=True, max_length=255, choices=PRELOAD_CHOICES,
+                               default=PRELOAD_CHOICES[0][0])
+
+    poster = FilerImageField(verbose_name=_('Thumbnail'), on_delete=models.SET_NULL, null=True, blank=True,
+                             related_name='video_poster')
+
+    class Meta:
+        verbose_name = _('Video Player')

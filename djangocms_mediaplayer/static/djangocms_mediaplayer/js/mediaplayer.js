@@ -3,6 +3,7 @@ let loadPlayer = (container) => {
     mediaElement.controls = false;
 
     let skip_time = 15; // in seconds
+    const videoPlayBtn = container.getElementsByClassName('video-wrapper')[0];
     const playPauseBtn = container.getElementsByClassName('play-btn')[0];
     const stopBtn = container.getElementsByClassName('stop-btn')[0];
     const rewindBtn = container.getElementsByClassName('rewind-btn')[0];
@@ -14,8 +15,14 @@ let loadPlayer = (container) => {
     const playtimeCurrent = container.getElementsByClassName('playtime-current')[0];
     const muteBtn = container.getElementsByClassName('mute-btn')[0];
     const volumeInput = container.getElementsByClassName('volume-slider')[0];
-
     const fullscreen = container.getElementsByClassName('fullscreen-btn')[0];
+
+    if (videoPlayBtn) {
+        videoPlayBtn.addEventListener('click', () => {
+            mediaElement.paused ?  mediaElement.play() : mediaElement.pause();
+            iconPlaying.classList.toggle('playing')
+        });
+    }
 
     // buttons
     const iconPlaying = playPauseBtn.getElementsByClassName('icon-state')[0];
@@ -60,6 +67,16 @@ let loadPlayer = (container) => {
     });
 
     mediaElement.addEventListener('loadedmetadata', function() {
+        // set up video btn
+        if (videoPlayBtn) {
+            if (mediaElement.paused) {
+                videoPlayBtn.classList.add('paused');
+            } else {
+                videoPlayBtn.classList.remove('paused');
+            }
+        }
+
+        // set up progress bars
         let _duration = Math.round(mediaElement.duration).toString();
         if (progressBar) {
             progress.value = mediaElement.currentTime;
@@ -73,17 +90,27 @@ let loadPlayer = (container) => {
         playtimeDuration.innerText = parsePlayTime(mediaElement.duration);
         playtimeCurrent.innerText = parsePlayTime(mediaElement.currentTime);
 
+        // change mute icon
         if (mediaElement.muted) {
             volumeInput.value = 0;
             iconVolume.classList.add('mute');
         }
 
+
     });
 
     mediaElement.addEventListener('timeupdate', function() {
+        // update video play button
+        if (videoPlayBtn) {
+            if (mediaElement.paused) {
+                videoPlayBtn.classList.add('paused');
+            } else {
+                videoPlayBtn.classList.remove('paused');
+            }
+        }
+
         // update vol range
         mediaElement.muted ? volumeInput.value = 0 : volumeInput.value = logToPosition(mediaElement.volume * 100);
-        console.log(mediaElement.currentTime);
 
         if (progressSlider) {
             progressSlider.value = mediaElement.currentTime;
