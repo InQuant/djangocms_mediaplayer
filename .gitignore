@@ -210,7 +210,6 @@ fabric.properties
 # Custom
 media/
 dev/
-**/migrations/0*.py
 DATABASE.cnf
 staticfiles/
 log/

@@ -1,0 +1,9 @@
+include LICENSE
+include README.md
+recursive-include djangocms_mediaplayer/static/djangocms_mediaplayer/css *.css *.scss *.css.map
+recursive-include djangocms_mediaplayer/static/djangocms_mediaplayer/js *.js
+recursive-include djangocms_mediaplayer/static/djangocms_mediaplayer/img *
+recursive-include djangocms_mediaplayer/templates *
+recursive-include djangocms_mediaplayer/migrations *.py
+recursive-include djangocms_mediaplayer/locale *.po
+recursive-include djangocms_mediaplayer/locale *.mo
