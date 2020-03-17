@@ -30,7 +30,7 @@ TESTS_REQUIRE = ['tox >= 2.3']
 
 setup(
     name='djangocms_mediaplayer',
-    version='1.0.0',
+    version='1.0.1',
     author='Dominik Lysiak',
     author_email='dominik.lysiak@freenet.de',
     packages=['djangocms_mediaplayer'],
@@ -38,6 +38,7 @@ setup(
     license='MIT',
     description='A simple and highly customizable audio and video player plugin for the DjangoCMS.',
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     zip_safe=False,
     include_package_data=True,
     package_data={'': ['README.md'], },

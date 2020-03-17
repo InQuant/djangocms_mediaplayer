@@ -11,7 +11,7 @@
         {% if instance.poster %} poster="{{ instance.poster.url }}"{% endif %}
         {% if instance.is_muted %} muted{% endif %}>
       <div class="video-play-btn"></div>
-      <source src="{{ instance.file.url }}" type="audio/{{mp3}}">
+      <source src="{{ instance.file.url }}" type="video/{{instance.file.extension}}">
       {{ instance.not_supported_text }}
     </video>
   </div>
