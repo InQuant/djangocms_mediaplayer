@@ -16,6 +16,7 @@ $player-font-size: 1rem;
 
   // Play button overlay
   .video-wrapper {
+    line-height: 0;
     &.paused:after {
       content: "";
       cursor: pointer;

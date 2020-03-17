@@ -214,6 +214,7 @@ DATABASE.cnf
 staticfiles/
 log/
 .idea
-django_modules_dev/
+example/
 /templates/
 *.scssc
+build.sh

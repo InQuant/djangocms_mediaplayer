@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from filer.fields.file import FilerFileField, File
 from filer.fields.image import FilerImageField
 
-from djangocms_mediaplayer import app_settings
+from . import app_settings
 
 
 def check_ext(ext, valid_ext: list):

@@ -2,7 +2,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 
-from djangocms_mediaplayer.models import AudioPlayer, VideoPlayer
+from .models import AudioPlayer, VideoPlayer
 
 
 @plugin_pool.register_plugin

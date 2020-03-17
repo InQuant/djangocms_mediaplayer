@@ -5,21 +5,23 @@
   position: relative; }
   .mediaplayer-container video {
     width: 100%; }
-  .mediaplayer-container .video-wrapper.paused:after {
-    content: "";
-    cursor: pointer;
-    width: 5rem;
-    height: 5rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url("../img/play-circle-regular.svg") no-repeat center center;
-    background-size: 100% 100%; }
+  .mediaplayer-container .video-wrapper {
+    line-height: 0; }
+    .mediaplayer-container .video-wrapper.paused:after {
+      content: "";
+      cursor: pointer;
+      width: 5rem;
+      height: 5rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -o-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      background: url("../img/play-circle-regular.svg") no-repeat center center;
+      background-size: 100% 100%; }
   .mediaplayer-container[data-fullscreen="true"] {
     z-index: 0; }
     .mediaplayer-container[data-fullscreen="true"] video {
