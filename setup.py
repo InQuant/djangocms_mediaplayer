@@ -40,7 +40,7 @@ setup(
     long_description=open('README.md').read(),
     zip_safe=False,
     include_package_data=True,
-    package_data={'': ['README.md']},
+    package_data={'': ['README.md'], },
     install_requires=['django>=2.2', 'django-filer>=1.7.0', 'django-sekizai>=1.1.0'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
