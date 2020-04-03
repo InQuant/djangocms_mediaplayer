@@ -27,11 +27,11 @@ Customize your HTML media player easily through overriding the css styles or cre
 pip install djangocms-mediaplayer
 ```
 
-- Add `djangocms_mediaplayer` to you INSTALLED_APPS in django's `settings.py`
+- Add `mediaplayer` to you INSTALLED_APPS in django's `settings.py`
 ```python
 INSTALLED_APPS = (
     # other apps
-    "djangocms_mediaplayer",
+    "mediaplayer",
 )
 ```
 

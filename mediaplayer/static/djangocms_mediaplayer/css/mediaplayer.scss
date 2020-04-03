@@ -1,7 +1,9 @@
 $player-primary-color: white;
 $player-secondary-color: black;
 
-$player-progress-bar-color: dodgerblue;
+$player-progress-bar-color: $player-primary-color;
+$player-controls-color: $player-primary-color;
+$player-controls-hover-color: white;
 $player-font-size: 1rem;
 
 
@@ -12,13 +14,54 @@ $player-font-size: 1rem;
   margin: 0;
   position: relative;
 
-  video { width: 100%; }
+
+  .video-wrapper.playing:after {
+    opacity: 0;
+    transition: opacity 120ms ease-in-out;
+    -webkit-transition:opacity 120ms ease-in-out;
+  }
+
+  .player-controls.video {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 120ms ease-in-out;
+    -webkit-transition:opacity 120ms ease-in-out;
+  }
+
+  &.hide-controls {
+    .player-controls {
+      opacity: 0 !important;
+    }
+    .video-wrapper.playing:after {
+      opacity: 0 !important;
+    }
+  }
+
+  &:hover {
+    .video-wrapper.playing:after {
+      opacity: 1;
+    }
+
+    .player-controls {
+      opacity: 1;
+    }
+  }
+
+  video {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
 
   // Play button overlay
   .video-wrapper {
     line-height: 0;
-    &.paused:after {
+    &:after {
       content: "";
+      z-index: 10;
       cursor: pointer;
       width: 5rem;
       height: 5rem;
@@ -34,6 +77,11 @@ $player-font-size: 1rem;
       background: url("../img/play-circle-regular.svg") no-repeat center center;
       background-size: 100% 100%;
     }
+    &.playing:after {
+      background: url("../img/pause-circle-regular.svg") no-repeat center center;
+      //content: none;
+    }
+
   }
 
   // Fullscreen adjustments
@@ -65,7 +113,7 @@ $player-font-size: 1rem;
     display: inline-block;
     width: 1rem;
     height: 1rem;
-    background: white;
+    background: $player-controls-color;
     margin: 0.3rem;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
@@ -118,6 +166,7 @@ $player-font-size: 1rem;
 
     &.audio { border-radius: 0.3rem; }
     &, a { color: $player-primary-color; font-size: $player-font-size;}
+
     & > div {
       display: flex;
       justify-content: center;
@@ -133,6 +182,11 @@ $player-font-size: 1rem;
       font: inherit;
       display: inherit;
       cursor: pointer;
+
+
+      &:hover .icon {
+        background-color: $player-controls-hover-color;
+      }
     }
 
     // not browsable progress bar
@@ -173,6 +227,7 @@ $player-font-size: 1rem;
         }
         &::-moz-range-thumb {
           border: none;
+          background-color: $player-primary-color;
         }
       }
     }
@@ -196,6 +251,7 @@ $player-font-size: 1rem;
 
         &::-moz-range-thumb {
           border: none;
+          background-color: $player-primary-color;
         }
         &::-moz-range-track, &::-webkit-slider-runnable-track {
           background-color: rgba(255,255,255,0.25);

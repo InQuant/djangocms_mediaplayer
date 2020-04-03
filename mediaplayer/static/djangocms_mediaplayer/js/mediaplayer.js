@@ -70,9 +70,9 @@ let loadPlayer = (container) => {
         // set up video btn
         if (videoPlayBtn) {
             if (mediaElement.paused) {
-                videoPlayBtn.classList.add('paused');
+                videoPlayBtn.classList.remove('playing');
             } else {
-                videoPlayBtn.classList.remove('paused');
+                videoPlayBtn.classList.add('playing');
             }
         }
 
@@ -95,18 +95,36 @@ let loadPlayer = (container) => {
             volumeInput.value = 0;
             iconVolume.classList.add('mute');
         }
-
-
     });
 
+    let mouseMovement = true;
+    let mouseMovementTimeout = null;
     mediaElement.addEventListener('timeupdate', function() {
         // update video play button
         if (videoPlayBtn) {
             if (mediaElement.paused) {
-                videoPlayBtn.classList.add('paused');
+                videoPlayBtn.classList.remove('playing');
             } else {
-                videoPlayBtn.classList.remove('paused');
+                videoPlayBtn.classList.add('playing');
             }
+        }
+
+        if (videoPlayBtn) {// hacky-style: check if is video
+            window.onmousemove = function(e) {
+                mouseMovement = true;
+                if (mouseMovementTimeout) {
+                    clearTimeout(mouseMovementTimeout);
+                }
+                mouseMovementTimeout = setTimeout(function () {
+                    mouseMovement = false;
+                }, 1300)
+            };
+        }
+
+        if (!mouseMovement) {
+            container.classList.add('hide-controls');
+        } else {
+            container.classList.remove('hide-controls');
         }
 
         // update vol range

@@ -3,12 +3,35 @@
   box-sizing: border-box;
   margin: 0;
   position: relative; }
+  .mediaplayer-container .video-wrapper.playing:after {
+    opacity: 0;
+    transition: opacity 120ms ease-in-out;
+    -webkit-transition: opacity 120ms ease-in-out; }
+  .mediaplayer-container .player-controls.video {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 120ms ease-in-out;
+    -webkit-transition: opacity 120ms ease-in-out; }
+  .mediaplayer-container.hide-controls .player-controls {
+    opacity: 0 !important; }
+  .mediaplayer-container.hide-controls .video-wrapper.playing:after {
+    opacity: 0 !important; }
+  .mediaplayer-container:hover .video-wrapper.playing:after {
+    opacity: 1; }
+  .mediaplayer-container:hover .player-controls {
+    opacity: 1; }
   .mediaplayer-container video {
-    width: 100%; }
+    width: 100%;
+    background-size: cover;
+    background-position: center center; }
   .mediaplayer-container .video-wrapper {
     line-height: 0; }
-    .mediaplayer-container .video-wrapper.paused:after {
+    .mediaplayer-container .video-wrapper:after {
       content: "";
+      z-index: 10;
       cursor: pointer;
       width: 5rem;
       height: 5rem;
@@ -22,6 +45,8 @@
       transform: translateX(-50%) translateY(-50%);
       background: url("../img/play-circle-regular.svg") no-repeat center center;
       background-size: 100% 100%; }
+    .mediaplayer-container .video-wrapper.playing:after {
+      background: url("../img/pause-circle-regular.svg") no-repeat center center; }
   .mediaplayer-container[data-fullscreen="true"] {
     z-index: 0; }
     .mediaplayer-container[data-fullscreen="true"] video {
@@ -100,6 +125,8 @@
       font: inherit;
       display: inherit;
       cursor: pointer; }
+      .mediaplayer-container .player-controls button:hover .icon {
+        background-color: white; }
     .mediaplayer-container .player-controls .progress-container {
       width: 50%;
       display: flex;
@@ -111,7 +138,7 @@
         border-radius: 0.3rem;
         overflow: hidden; }
         .mediaplayer-container .player-controls .progress-container progress[value]::-webkit-progress-bar, .mediaplayer-container .player-controls .progress-container progress[value]::-moz-progress-bar, .mediaplayer-container .player-controls .progress-container progress[value]::-webkit-progress-value {
-          background-color: dodgerblue; }
+          background-color: white; }
     .mediaplayer-container .player-controls .slide-container {
       width: 100%; }
       .mediaplayer-container .player-controls .slide-container input[type="range"] {
@@ -121,9 +148,10 @@
         .mediaplayer-container .player-controls .slide-container input[type="range"]::-moz-range-track, .mediaplayer-container .player-controls .slide-container input[type="range"]::-webkit-slider-runnable-track {
           background-color: rgba(255, 255, 255, 0.25); }
         .mediaplayer-container .player-controls .slide-container input[type="range"]::-moz-range-progress {
-          background-color: dodgerblue; }
+          background-color: white; }
         .mediaplayer-container .player-controls .slide-container input[type="range"]::-moz-range-thumb {
-          border: none; }
+          border: none;
+          background-color: white; }
     .mediaplayer-container .player-controls .playtime-text {
       white-space: nowrap;
       display: flex;
@@ -136,10 +164,11 @@
         background: transparent;
         width: 100%; }
         .mediaplayer-container .player-controls .volume-slider-container .volume-slider::-moz-range-thumb {
-          border: none; }
+          border: none;
+          background-color: white; }
         .mediaplayer-container .player-controls .volume-slider-container .volume-slider::-moz-range-track, .mediaplayer-container .player-controls .volume-slider-container .volume-slider::-webkit-slider-runnable-track {
           background-color: rgba(255, 255, 255, 0.25); }
         .mediaplayer-container .player-controls .volume-slider-container .volume-slider::-moz-range-progress {
-          background-color: dodgerblue; }
+          background-color: white; }
 
 /*# sourceMappingURL=mediaplayer.css.map */

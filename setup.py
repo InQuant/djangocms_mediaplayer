@@ -33,7 +33,7 @@ setup(
     version='1.0.4',
     author='Dominik Lysiak',
     author_email='dominik.lysiak@freenet.de',
-    packages=['djangocms_mediaplayer'],
+    packages=['mediaplayer'],
     url='https://github.com/domlysi/djangocms_mediaplayer',
     license='MIT',
     description='A simple and highly customizable audio and video player plugin for the DjangoCMS.',
@@ -42,7 +42,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data={'': ['README.md'], },
-    install_requires=['django>=2.2', 'django-filer>=1.7.0', 'django-sekizai>=1.1.0'],
+    install_requires=['django>=2.2', 'django-filer>=1.7.0', 'django-sekizai>=1.1.0', 'djangocms-plus'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
