@@ -1,0 +1,38 @@
+{% load sekizai_tags staticfiles %}
+{% addtoblock 'css' %}<link rel="stylesheet" href="{% static 'djangocms_mediaplayer/css/mediaplayer.scss' %}">{% endaddtoblock %}
+
+  <figure class="mediaplayer-container" id="mediaplayer_{{ instance.id }}">
+    <audio class="media-element" src="{{ data.file.url }}" controls
+        {% if data.preload %} preload="{{ data.preload }}"{% endif %}
+        {% if data.is_autoplay %} autoplay="true"{% endif %}
+        {% if data.is_loop %} loop{% endif %}
+        {% if data.is_muted %} muted{% endif %}>
+      <source src="{{ data.file.url }}" type="audio/{{data.file.extension}}">
+      {{ data.not_supported_text }}
+    </audio>
+
+    <div class="player-controls audio">
+      <div><button class="play-btn"><span class="icon icon-state"></span></button></div>
+      <div><button class="stop-btn"><span class=""></span></button></div>
+      {% if data.show_skip_controls %}
+        <div><button class="rewind-btn"><span class="icon icon-rewind"></span></button></div>
+        <div><button class="fast-forward-btn"><span class="icon icon-fast-forward"></span></button></div>
+      {% endif %}
+      {% if data.show_slide %}
+        <div class="slide-container">
+          <input type="range" min="0" max="100" value="0" class="slider">
+        </div>
+      {% else %}
+        <div class="progress-container">
+          <progress class="progress" value="0" max="1">
+            <span class="progress-bar"></span>
+          </progress>
+        </div>
+      {% endif %}
+      <div class="playtime-text"><span class="playtime-current">0:00</span> / <span class="playtime-duration">00:00</span></div>
+      <div><button class="mute-btn"><span class="icon icon-volume"></span></button></div>
+      <div class="volume-slider-container"><input type="range" min="0" max="100" value="100" class="volume-slider"></div>
+    </div>
+  </figure>
+
+{% addtoblock 'js' %}<script type="application/javascript" src="{% static 'djangocms_mediaplayer/js/mediaplayer.js' %}"></script>{% endaddtoblock %}

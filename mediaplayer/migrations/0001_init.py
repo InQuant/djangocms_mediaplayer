@@ -3,7 +3,7 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import djangocms_mediaplayer.models
+import mediaplayer.models
 import filer.fields.file
 import filer.fields.image
 
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='VideoPlayer',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='djangocms_mediaplayer_videoplayer', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='mediaplayer_videoplayer', serialize=False, to='cms.CMSPlugin')),
                 ('not_supported_text', models.TextField(default='Your browser does not support video playback.', help_text='Is shown when browser is not supporting video files', verbose_name='Not Supported Text')),
                 ('show_controls', models.BooleanField(default=True, verbose_name='Controls')),
                 ('show_slide', models.BooleanField(default=True, verbose_name='Allow sliding')),
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('is_loop', models.BooleanField(default=False, verbose_name='Loop')),
                 ('is_muted', models.BooleanField(default=False, verbose_name='Muted')),
                 ('preload', models.CharField(blank=True, choices=[('auto', 'Auto'), ('metadata', 'Metadata'), ('none', 'None')], default='auto', max_length=255, null=True)),
-                ('file', filer.fields.file.FilerFileField(on_delete=django.db.models.deletion.CASCADE, to='filer.File', validators=[djangocms_mediaplayer.models.validate_video_file], verbose_name='Video File')),
+                ('file', filer.fields.file.FilerFileField(on_delete=django.db.models.deletion.CASCADE, to='filer.File', validators=[mediaplayer.models.validate_video_file], verbose_name='Video File')),
                 ('poster', filer.fields.image.FilerImageField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='video_poster', to=settings.FILER_IMAGE_MODEL, verbose_name='Thumbnail')),
             ],
             options={
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AudioPlayer',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='djangocms_mediaplayer_audioplayer', serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='mediaplayer_audioplayer', serialize=False, to='cms.CMSPlugin')),
                 ('not_supported_text', models.TextField(default='Your browser does not support audio playback.', help_text='Is shown when browser is not supporting audio files', verbose_name='Not Supported Text')),
                 ('show_slide', models.BooleanField(default=True, verbose_name='Allow sliding')),
                 ('show_skip_controls', models.BooleanField(default=False, verbose_name='Skip Controls')),
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
                 ('is_autoplay', models.BooleanField(default=False, verbose_name='Autoplay')),
                 ('is_loop', models.BooleanField(default=False, verbose_name='Loop')),
                 ('is_muted', models.BooleanField(default=False, verbose_name='Muted')),
-                ('file', filer.fields.file.FilerFileField(on_delete=django.db.models.deletion.CASCADE, to='filer.File', validators=[djangocms_mediaplayer.models.validate_audio_file], verbose_name='Audio File')),
+                ('file', filer.fields.file.FilerFileField(on_delete=django.db.models.deletion.CASCADE, to='filer.File', validators=[mediaplayer.models.validate_audio_file], verbose_name='Audio File')),
             ],
             options={
                 'verbose_name': 'Audio Player',
