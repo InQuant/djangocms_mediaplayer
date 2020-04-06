@@ -30,7 +30,7 @@ TESTS_REQUIRE = ['tox >= 2.3']
 
 setup(
     name='djangocms_mediaplayer',
-    version='1.0.4',
+    version='1.1.0',
     author='Dominik Lysiak',
     author_email='dominik.lysiak@freenet.de',
     packages=['mediaplayer'],
