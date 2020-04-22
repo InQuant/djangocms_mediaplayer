@@ -1,14 +1,13 @@
 from cmsplus.fields import PlusModelChoiceField
-from cmsplus.forms import PlusPluginBaseForm
+from cmsplus.forms import PlusPluginFormBase
 from django import forms
+from django.contrib.admin.sites import site as admin_site
 from django.core.exceptions import ValidationError
 from django.db.models import ManyToOneRel
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.file import AdminFileWidget, FilerFileField
 from filer.fields.file import File
 from filer.models.filemodels import File as FilerFileModel
-from django.contrib.admin.sites import site as admin_site
-
 
 from . import app_settings
 
@@ -37,7 +36,7 @@ def validate_video_file(value):
     check_ext(file.extension, app_settings.MEDIAPLAYER_ALLOWED_VIDEO_EXTENSIONS)
 
 
-class BasePlayerForm(PlusPluginBaseForm):
+class BasePlayerForm(PlusPluginFormBase):
     not_supported_text = forms.CharField(widget=forms.Textarea, label=_('Not supported text'), initial=_('Not supported'),
                                          help_text=_('Text if player is not supportet by browser'), required=False)
     show_slide = forms.BooleanField(label=_('Allow sliding'), initial=True, required=False)

@@ -248,7 +248,6 @@ let parsePlayTime = (time_in_s) => {
     let m = Math.floor(time_in_s  / 60);
     let s = time_in_s - m * 60;
 
-    // m = m.toString().padStart(2, '0');
     s = s.toString().padStart(2, '0');
 
     return `${m}:${s}`;

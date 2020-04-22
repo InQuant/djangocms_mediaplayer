@@ -1,4 +1,3 @@
-from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from cmsplus.plugin_base import PlusPluginBase
 from django.utils.translation import ugettext_lazy as _

@@ -2,23 +2,23 @@
 {% addtoblock 'css' %}<link rel="stylesheet" href="{% static 'djangocms_mediaplayer/css/mediaplayer.scss' %}">{% endaddtoblock %}
 
   <figure class="mediaplayer-container" id="mediaplayer_{{ instance.id }}">
-    <audio class="media-element" src="{{ data.file.url }}" controls
-        {% if data.preload %} preload="{{ data.preload }}"{% endif %}
-        {% if data.is_autoplay %} autoplay="true"{% endif %}
-        {% if data.is_loop %} loop{% endif %}
-        {% if data.is_muted %} muted{% endif %}>
-      <source src="{{ data.file.url }}" type="audio/{{data.file.extension}}">
-      {{ data.not_supported_text }}
+    <audio class="media-element" src="{{ instance.glossary.file.url }}" controls
+        {% if instance.glossary.preload %} preload="{{ instance.glossary.preload }}"{% endif %}
+        {% if instance.glossary.is_autoplay %} autoplay="true"{% endif %}
+        {% if instance.glossary.is_loop %} loop{% endif %}
+        {% if instance.glossary.is_muted %} muted{% endif %}>
+      <source src="{{ instance.glossary.file.url }}" type="audio/{{instance.glossary.file.extension}}">
+      {{ instance.glossary.not_supported_text }}
     </audio>
 
     <div class="player-controls audio">
       <div><button class="play-btn"><span class="icon icon-state"></span></button></div>
       <div><button class="stop-btn"><span class=""></span></button></div>
-      {% if data.show_skip_controls %}
+      {% if instance.glossary.show_skip_controls %}
         <div><button class="rewind-btn"><span class="icon icon-rewind"></span></button></div>
         <div><button class="fast-forward-btn"><span class="icon icon-fast-forward"></span></button></div>
       {% endif %}
-      {% if data.show_slide %}
+      {% if instance.glossary.show_slide %}
         <div class="slide-container">
           <input type="range" min="0" max="100" value="0" class="slider">
         </div>
