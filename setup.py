@@ -1,7 +1,7 @@
 import sys
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
-
+from mediaplayer import __version__
 
 class Tox(TestCommand):
 
@@ -30,7 +30,7 @@ TESTS_REQUIRE = ['tox >= 2.3']
 
 setup(
     name='djangocms_mediaplayer',
-    version='1.1.0',
+    version=__version__,
     author='Dominik Lysiak',
     author_email='dominik.lysiak@freenet.de',
     packages=['mediaplayer'],
