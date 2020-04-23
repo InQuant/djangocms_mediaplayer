@@ -9,5 +9,5 @@ class DjangocmsMediaplayerConfig(AppConfig):
 
     def __init__(self, app_name, app_module):
         if 'cmsplus' not in settings.INSTALLED_APPS:
-            settings.INSTALLED_APPS += ["cmsplus", ]
+            settings.INSTALLED_APPS += ("cmsplus", )
         super().__init__(app_name, app_module)

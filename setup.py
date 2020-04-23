@@ -3,6 +3,7 @@ from setuptools import setup
 from setuptools.command.test import test as TestCommand
 from mediaplayer import __version__
 
+
 class Tox(TestCommand):
 
     def initialize_options(self):
