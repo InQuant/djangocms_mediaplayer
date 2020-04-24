@@ -11,8 +11,9 @@ TESTDIR = '.'
 PROJECT :=
 ENV = venv
 # Override by putting on commandline:  python=python2.7
-python = python
+python = python3
 REQUIRE = requirements.txt
+
 ##############################################################################
 ifdef TRAVIS
 	ENV = $(VIRTUAL_ENV)
@@ -28,7 +29,7 @@ TOX := $(BIN)/tox
 PYTHON := $(BIN)/$(python)
 ANALIZE := $(BIN)/pylint
 COVERAGE := $(BIN)/coverage
-TEST_RUNNER := $(PYTHON) ./manage.py test $(PACKAGE)
+TEST_RUNNER := $(PYTHON) ./manage.py test
 
 # Project settings
 PKGDIR := $(or $(PACKAGE), ./)
@@ -95,8 +96,8 @@ $(ANALIZE):
 test: $(REQUIREMENTS_LOG) $(TEST_RUNNER)
 	$(TEST_RUNNER) $(args) $(TESTDIR)
 
-$(TEST_RUNNER):
-	$(PIP) install $(TEST_RUNNER_PKGS) | tee -a $(REQUIREMENTS_LOG)
+#$(TEST_RUNNER):
+#	$(PIP) install $(TEST_RUNNER_PKGS) | tee -a $(REQUIREMENTS_LOG)
 
 coverage: $(REQUIREMENTS_LOG) $(COVERAGE) $(COVERAGE_FILE)
 	$(TEST_RUNNER) $(args) $(COVER_ARG) $(TESTDIR)

@@ -19,11 +19,10 @@ def check_ext(ext, valid_ext: list):
 
 def get_file(value):
     if isinstance(value, int):
-        return File.objects.get(pk=value)   # type: File
-    elif isinstance(value, File):
+        return File.objects.get(pk=value)
+    if isinstance(value, File):
         return value
-    else:
-        raise AttributeError("value needs to be either int (pk of file) or file itself")
+    raise AttributeError("value needs to be either int (pk of file) or file itself")
 
 
 def validate_audio_file(value):
