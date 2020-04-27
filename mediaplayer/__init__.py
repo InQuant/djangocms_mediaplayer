@@ -1,2 +1,2 @@
 default_app_config = 'mediaplayer.apps.DjangocmsMediaplayerConfig'
-__version__ = "1.2.11"
+__version__ = "1.2.12"

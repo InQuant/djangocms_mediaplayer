@@ -29,6 +29,8 @@
     background-position: center center; }
   .mediaplayer-container .video-wrapper {
     line-height: 0; }
+    .mediaplayer-container .video-wrapper[data-show-controls='false']:after {
+      display: none; }
     .mediaplayer-container .video-wrapper:after {
       content: "";
       z-index: 10;

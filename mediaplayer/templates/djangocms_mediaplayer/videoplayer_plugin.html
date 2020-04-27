@@ -3,7 +3,7 @@
 
 
 <figure class="mediaplayer-container" id="mediaplayer_{{ instance.id }}">
-  <div class="video-wrapper">
+  <div class="video-wrapper" data-show-controls="{{ instance.glossary.show_controls|yesno:"true,false" }}">
     <video class="media-element" src="{{ instance.glossary.file.url }}" controls
         {% if instance.glossary.poster %} preload="none"
         {% elif instance.glossary.preload %} preload="{{ instance.glossary.preload }}"
