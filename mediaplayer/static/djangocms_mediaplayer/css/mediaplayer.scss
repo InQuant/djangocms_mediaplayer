@@ -64,10 +64,13 @@ $player-font-size: 1rem;
     &[data-show-controls='false']:after {
       display: none;
     }
+    &[data-show-controls='true']:after {
+      display: block;
+    }
 
     &:after {
-      content: "";
       z-index: 10;
+      content: "";
       cursor: pointer;
       width: 5rem;
       height: 5rem;

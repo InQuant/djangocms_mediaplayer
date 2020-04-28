@@ -31,9 +31,11 @@
     line-height: 0; }
     .mediaplayer-container .video-wrapper[data-show-controls='false']:after {
       display: none; }
+    .mediaplayer-container .video-wrapper[data-show-controls='true']:after {
+      display: block; }
     .mediaplayer-container .video-wrapper:after {
-      content: "";
       z-index: 10;
+      content: "";
       cursor: pointer;
       width: 5rem;
       height: 5rem;
