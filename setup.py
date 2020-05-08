@@ -42,7 +42,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data={'': ['README.md'], },
-    install_requires=['django-filer>=1.7.0', 'djangocms-plus~=0.1.13'],
+    install_requires=['django-filer>=1.7.0', 'djangocms-plus'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',

@@ -1,2 +1,2 @@
-djangocms-plus~=0.1.13
+djangocms-plus
 django-filer>=1.7.0

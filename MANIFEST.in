@@ -4,6 +4,6 @@ recursive-include mediaplayer/static/djangocms_mediaplayer/css *.css *.scss *.cs
 recursive-include mediaplayer/static/djangocms_mediaplayer/js *.js
 recursive-include mediaplayer/static/djangocms_mediaplayer/img *
 recursive-include mediaplayer/templates *
-recursive-include mediaplayer/migrations *.py
 recursive-include mediaplayer/locale *.po
 recursive-include mediaplayer/locale *.mo
+recursive-include mediaplayer/ *.py
