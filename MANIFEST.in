@@ -1,8 +1,8 @@
 include LICENSE
 include README.md
-recursive-include mediaplayer/static/djangocms_mediaplayer/css *.css *.scss *.css.map
-recursive-include mediaplayer/static/djangocms_mediaplayer/js *.js
-recursive-include mediaplayer/static/djangocms_mediaplayer/img *
+recursive-include mediaplayer/static/mediaplayer/css *.css *.scss *.css.map
+recursive-include mediaplayer/static/mediaplayer/js *.js
+recursive-include mediaplayer/static/mediaplayer/img *
 recursive-include mediaplayer/templates *
 recursive-include mediaplayer/locale *.po
 recursive-include mediaplayer/locale *.mo

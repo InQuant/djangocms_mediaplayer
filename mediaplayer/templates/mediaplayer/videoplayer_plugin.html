@@ -1,5 +1,5 @@
 {% load sekizai_tags static %}
-{% addtoblock 'css' %}<link rel="stylesheet" href="{% static 'djangocms_mediaplayer/css/mediaplayer.css' %}">{% endaddtoblock %}
+{% addtoblock 'css' %}<link rel="stylesheet" href="{% static 'mediaplayer/css/mediaplayer.css' %}">{% endaddtoblock %}
 
 
 <figure class="mediaplayer-container" id="mediaplayer_{{ instance.id }}">
@@ -42,4 +42,4 @@
   </div>
 </figure>
 
-{% addtoblock 'js' %}<script type="application/javascript" src="{% static 'djangocms_mediaplayer/js/mediaplayer.js' %}"></script>{% endaddtoblock %}
+{% addtoblock 'js' %}<script type="application/javascript" src="{% static 'mediaplayer/js/mediaplayer.js' %}"></script>{% endaddtoblock %}

@@ -9,7 +9,7 @@ from .forms import AudioPlayerForm, VideoPlayerForm
 class VideoPlayerPlugin(PlusPluginBase):
     name = _('Video Player')
     form = VideoPlayerForm
-    render_template = 'djangocms_mediaplayer/videoplayer_plugin.html'
+    render_template = 'mediaplayer/videoplayer_plugin.html'
     module = _('Media Player')
 
 
@@ -17,5 +17,5 @@ class VideoPlayerPlugin(PlusPluginBase):
 class AudioPlayerPlugin(PlusPluginBase):
     name = _('Audio Player')
     form = AudioPlayerForm
-    render_template = 'djangocms_mediaplayer/audioplayer_plugin.html'
+    render_template = 'mediaplayer/audioplayer_plugin.html'
     module = _('Media Player')
